@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>perfil</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class = "watching-container">
+        <h2>Who's watching?</h2>
+
+        <div class = "profile" id="roberto-profile">
+            <img src="/img/simba.jpg" alt="Profile Image" class = "profile-image" onmouseover="enlargeProfile(this)" onmouseout="resetProfile(this)">
+            <p class = "profile-name">Roberto</p>
+        </div>
+        <div class="new-profile" id="add-profile" onclick="showCustomMessage()">
+            <img src="/img/newprofile.png" alt="New Profile Image" class = "profile-image" onmouseover="enlargeProfile(this)" onmouseout="resetProfile(this)">
+            <p class = "profile-name">Add Profile</p>
+
+        </div>
+    </div>
+
+    <!-- Llama al archivo JavaScript -->
+    <script src="script.js"></script>
+
+
+</body>
+</html>

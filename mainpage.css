@@ -1,0 +1,604 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #181E28;
+    font-family: 'Dosis', sans-serif;
+}
+
+body.on{
+    background: radial-gradient(#3b475c,#181E28);
+}
+
+/*FOCO*/
+
+.bulb{ /*FOCO APAGADO*/
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: #444;
+    border-radius: 50%;
+    z-index: 2;
+    margin-top: -150px; /*altura de foco*/
+    
+}
+
+
+body.on .bulb{ /*RESPLANDOR CUANDO ESTA ON*/
+   /**/ margin-top: -150px;
+    background: #fff;
+    box-shadow: 0 0 50px #fff,
+    0 0 100px #fff,
+    0 0 150px #fff,
+    0 0 200px #fff,
+    0 0 250px #fff,
+    0 0 300px #fff,
+    0 0 350px #fff;
+   
+}
+
+.bulb::before{ /*FOCO ANTES*/
+    content: '';
+    position: absolute;
+    top:-50px;
+    left: 22.5px;
+    width: 35px;
+    height: 80px;
+    background: #444;
+    border-top: 30px solid #000;
+    border-radius: 10px;
+}
+
+body.on .bulb::before{
+    background: #fff;
+}
+
+body.on .bulb::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background: #fff;
+    border-radius: 50%;
+    filter: blur(40px);
+    
+}
+
+
+/*LADOS DEL FOCO*/
+.bulb span:nth-child(1){
+    position: absolute;
+    top: -16px;
+    left: -4px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    transform: rotate(342deg);
+    border-bottom-right-radius: 40px;
+    box-shadow: 20px 20px 0 10px #444;
+}
+
+body.on .bulb span:nth-child(1){
+    box-shadow: 20px 20px 0 10px #fff;
+}
+
+.bulb span:nth-child(2){
+    position: absolute;
+    top: -16px;
+    right: -4px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    transform: rotate(17deg);
+    border-bottom-left-radius: 40px;
+    box-shadow: -20px 20px 0 10px #444;
+}
+
+body.on .bulb span:nth-child(2){
+    box-shadow: -20px 20px 0 10px #fff;
+}
+
+/*CABLE*/
+.wire{
+    position:absolute;
+    left: calc(50% - 2px);
+    bottom: 70%; /*para tamaño de cable*/
+    width: 4px;
+    height: 60vh;
+    background: #000;
+    z-index: 1;
+}
+
+/*SWITCH*/
+.switch{
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(#eee, #ccc, #eee);
+    border: 4px solid #000;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.switch .btn{
+    position: relative;
+    width: 25px;
+    height: 40px;
+    background: linear-gradient(#777, #fff,#777);
+    border-radius: 6px;
+    border: 1.5px solid #000;
+    cursor: pointer;
+}
+
+.switch .btn::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 85%;
+    background: linear-gradient(#fff, #fff);
+    border-radius: 4px;
+}
+
+.on .switch .btn::before{
+    top: 15%;
+}
+
+#audio{
+    display: none;
+}
+
+
+/*MESA*/
+.mesa{
+    position: absolute;
+    top: 500px;
+    left: 50%; 
+    transform: translateX(-50%);
+    z-index: 1;
+    opacity: 0.3;
+}
+
+body::not(.on) .mesa{
+    opacity: 0.3;
+}
+
+body.on .mesa{
+    opacity: 1;
+}
+
+/*CERVEZAS*/
+.beer{
+    
+    position: absolute;
+    top: 0px;
+    left: 58%; 
+    transform: translateX(-50%) scale(0.09);
+    z-index: 2;
+    opacity: 0;
+    margin-top: -400px;
+
+}
+
+body.on .beer{
+    opacity: 1;
+}
+
+/*CINE*/
+.cine{
+    
+    position: absolute;
+    top: 0px;
+    left: 39%; 
+    transform:translateX(-50%) scale(0.08);
+    z-index: 1;
+    opacity: 0;
+    margin-top: -300px;
+}
+
+body.on .cine{
+    opacity: 1;
+}
+
+/*BOLETO*/
+.boleto{
+    
+    position: absolute;
+    top: 0px;
+    left: 62%; 
+    transform: translateX(-50%) scale(0.053)  ;
+    z-index: 1;
+    opacity: 0;
+    margin-top: -610px;
+}
+
+
+body.on .boleto{
+    opacity: 1;
+}
+
+/*CAMARA*/
+.camara{
+    
+    position: absolute;
+    top: 0px;
+    left: 48%; 
+    transform:translateX(-50%) scale(0.08);
+    z-index: 2;
+    opacity: 0;
+    margin-top: -320px;
+}
+
+body.on .camara{
+    opacity: 1;
+}
+
+/*COMIDa*/
+.comida{
+    
+    position: absolute;
+    top: 0px;
+    left: 53%; 
+    transform:translateX(-50%) scale(0.07);
+    z-index: 1;
+    opacity: 0;
+    margin-top: -300px;
+}
+
+body.on .comida{
+    opacity: 1;
+}
+
+/*XBOX*/
+.xbox{
+    
+    position: absolute;
+    top: 0px;
+    left: 43%; 
+    transform:translateX(-50%) scale(0.057);
+    z-index: 1;
+    opacity: 0;
+    margin-top: -85px;
+}
+
+body.on .xbox{
+    opacity: 1;
+}
+
+/*ELMO*/
+.elmo{
+    
+    position: absolute;
+    top: 0px;
+    left: 43%; 
+    transform:translateX(-50%) scale(0.057);
+    z-index: 1;
+    opacity: 0;
+    margin-top: -290px;
+}
+
+body.on .elmo{
+    opacity: 1;
+}
+
+/*CAJA DE TEXTO*/
+.modal{
+    
+    position: fixed;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+
+    
+    display: none; /*se oculta */
+    overflow: hidden;  /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange;/* The typwriter cursor */
+    white-space: nowrap;/** Keeps the content on a single line */
+    margin: 0 auto;/* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em;/* Adjust as needed */
+    animation: 
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+    z-index: 3;
+}
+/* The typing effect */
+@keyframes typing{
+    from {width: 0}
+    to {width: 50%} 
+}
+/* The typewriter cursor effect */
+@keyframes blink-caret{
+    from,to {border-color: transparent}
+    50%{border-color:rgb(3, 223, 117);}
+}
+body.on .modal {
+    display: block; /* Mostramos el modal cuando está encendido */
+}
+
+.molly{
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 86%; 
+    transform:translateX(-50%) scale(0.2);
+    z-index: 2;
+    margin-top: -230px;
+}
+
+.calabaza{
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 69%; 
+    transform:translateX(-50%) scale(0.2) scaleX(-1);
+    z-index: 1;
+    margin-top: -90px;
+}
+
+.eeve{
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 78%; 
+    transform:translateX(-50%) scale(0.2) ;
+    z-index: 1;
+    margin-top: -70px;
+}
+
+
+  
+  @media only screen and (max-width: 600px) {
+    .tips {
+      display:none;
+    }
+  }
+  /*** Speech Bubble CSS Code Starts Here ***/
+
+.speech-bubble{
+    --arrow-w:0.5em;
+    --arrow-h:1em;
+    --bubble-corners:0;
+    --w:12em;
+    --border-size:3px;
+    --text-color:black;
+    --bubble-color:white;
+    --border-color:black;
+  }
+  .speech-bubble{
+    display: none;
+    text-align:center;
+    font-family:cursive;
+    font-size:20px;
+    font-weight:bold;
+    color:var(--text-color);
+    background:var(--bubble-color);
+    padding:1em;
+    position:absolute;
+    border-radius:var(--bubble-corners);
+    max-width:var(--w);
+    box-shadow:0 0 0 var(--border-size) var(--border-color);
+    left: 68%;
+  }
+  
+  .speech-bubble.round{
+    --bubble-corners:1em;
+  }
+  
+  .speech-bubble.circle{
+    --bubble-corners:100%;
+    padding:2em;
+  }
+  
+  .speech-bubble:before,.speech-bubble:after{
+    content:"";
+    position:absolute;
+    bottom:calc(-1 * var(--arrow-h) * 2 + 0.5px);
+    left:50%;
+    border-style:solid;
+    border-width:var(--arrow-h) var(--arrow-w);
+    border-color:var(--bubble-color) transparent transparent;
+  }
+  
+  .speech-bubble:before{
+    border-width:calc(var(--arrow-h) + var(--border-size)) calc(var(--arrow-w) + var(--border-size));
+    border-color:var(--border-color) transparent transparent;
+    bottom:calc(-1 * var(--arrow-h) * 2 - 2.5*var(--border-size)); 
+    left:calc(50% - var(--border-size));
+  }
+  
+  .speech-bubble.t:after{
+    border-color:transparent transparent var(--bubble-color);
+    bottom:auto;
+    top:calc(-1 * var(--arrow-h) * 2 + 0.5px);
+  }
+  
+  .speech-bubble.t:before{
+    border-width:calc(var(--arrow-h) + var(--border-size)) calc(var(--arrow-w) + var(--border-size));
+    border-color:transparent transparent var(--border-color);
+    bottom:auto;
+    top:calc(-1 * var(--arrow-h) * 2 - 2.5*var(--border-size)); 
+  }
+  
+  .speech-bubble.l:after{
+    border-color:transparent var(--bubble-color) transparent transparent;
+    bottom:auto;
+    border-width:var(--arrow-w) var(--arrow-h);
+    top:calc(50% - var(--arrow-w));
+    left:calc(-1 * var(--arrow-h) * 2 + 0.5px);
+  }
+  
+  .speech-bubble.l:before{
+    border-width:calc(var(--arrow-w) + var(--border-size)) calc(var(--arrow-h) + var(--border-size));
+    border-color:transparent var(--border-color) transparent transparent;
+    bottom:auto;  
+    top:calc(50% - var(--arrow-w) - var(--border-size));
+    left:calc(-1 * var(--arrow-h) * 2 - 2.5*var(--border-size)); 
+  }
+  
+  .speech-bubble.r:after{
+    border-color:transparent transparent transparent var(--bubble-color);
+    bottom:auto;
+    left:auto;
+    border-width:var(--arrow-w) var(--arrow-h);
+    top:calc(50% - var(--arrow-w));
+    right:calc(-1 * var(--arrow-h) * 2 + 0.5px);
+  }
+  
+  .speech-bubble.r:before{
+    border-width:calc(var(--arrow-w) + var(--border-size)) calc(var(--arrow-h) + var(--border-size));
+    border-color:transparent transparent transparent var(--border-color);
+    bottom:auto;
+    left:auto;
+    top:calc(50% - var(--arrow-w) - var(--border-size));
+    right:calc(-1 * var(--arrow-h) * 2 - 2.5*var(--border-size)); 
+  }
+  
+  .speech-bubble.pop{
+    animation-name: pop;
+    animation-duration: 0.5s;
+    animation-timing-function:cubic-bezier(0.755, 0.050, 0.855, 0.060);
+  }
+  
+  .speech-bubble.float{
+    animation-name: float-up;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function:ease;
+  }
+  
+  .speech-bubble.r.float{
+    animation-name: float-left;
+  }
+  
+  .speech-bubble.l.float{
+    animation-name: float-right;
+  }
+  
+  .speech-bubble.t.float{
+    animation-name: float-down;
+  }
+  
+  @keyframes pop {
+    0% {transform: scale(0.8);}
+    80% {transform: scale(1.1);}
+    90% {transform: scale(0.9);}
+    100% {transform: scale(1);}
+  }
+  
+  @keyframes float-up {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(calc(-1 * var(--arrow-h)));}
+  }
+  
+  @keyframes float-left {
+    0% {transform: translateX(0);}
+    50% {transform: translateX(calc(-1 * var(--arrow-h)));}
+  }
+  
+  @keyframes float-right {
+    0% {transform: translateX(0);}
+    50% {transform: translateX(var(--arrow-h));}
+  }
+  
+  @keyframes float-down {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(var(--arrow-h));}
+  }
+
+/*BOTON PA REGALE*/
+a{
+    position:absolute;
+    padding: 10px 30px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    margin: 40px;
+    transition: 1s;
+    overflow: hidden;
+    text-decoration: none;
+    -webkit-box-reflect: below 1px linear-gradient(transparent,transparent,#0004);
+    left: 7%;
+}
+
+a:hover{ /*se colorea la box del colr */
+    background: var(--clr);
+    box-shadow: 0 0 10px var(--clr),
+    0 0 30px var(--clr),
+    0 0 60px var(--clr),
+    0 0 100px var(--clr);
+}
+ 
+a::before{ /*brilla cuando se pasa el cursor encima del color*/
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 400%;
+    background: var(--clr);
+    transition: 1s;
+    animation: animate 2s linear infinite;
+    animation-delay:calc(0.33s * var(--i)) ;
+}
+
+a:hover::before{ /*se hace grande el rect que gira*/
+    width: 120%;
+}
+
+@keyframes animate{ /*hace q gire el rect*/
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+a::after{
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background: #181E28;
+    transition: 0.5s;
+}
+
+a:hover::after{
+    background: var(--clr);
+}
+
+a span{
+    position: relative;
+    z-index: 1;
+    font-size: 1em;
+    color: #fff;
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+a:hover span{
+    opacity: 1;
+    color:#000
+}
+

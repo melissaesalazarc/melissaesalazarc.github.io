@@ -1,0 +1,685 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap');
+
+body{
+    font-family: 'Dosis', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #181E28;
+}
+
+.birthday-gift{
+    position:relative;
+}
+
+.birthday-gift.hidden {
+    display: none;
+}
+
+.birthday-gift:before{
+    content: "";
+    position: absolute;
+    width: 340px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.7); /*sombra de caja*/
+    top:185px;
+    left: -20px;
+}
+
+/*GIFT STYLE*/
+.gift{
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: #84a6fa; /*color de caja de regalo rect. gde*/
+}
+.gift:before{/*tira de enmedio aka liston*/
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 200px;
+    background-color: #ff3300;
+    left: 124px;
+
+}
+.gift:after{
+    content: "";
+    position: absolute;
+    box-shadow: inset 0 20px rgba(0, 0, 0, 0.7);/*sombra de l atapa de la caja*/
+    width: 300px;
+    height: 200px;
+}
+
+/*STYLE BOX*/
+input#click{ /*se oculta la cajita de click*/
+    display: none;
+}
+
+.click{/*tapa de la caja*/
+    position: absolute;
+    background-color: #84a6fa;
+    width: 320px;
+    height: 40px;
+    left: -10px;
+    top: -40px;
+    transform-origin: bottom left;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.click:before{
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 80px;
+    background-color: #ff3300;/*liston de la tapa*/
+    left: 134px;
+}
+
+.click:after{ /*moños*/
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 0;
+    border-bottom: 60px solid #ff3300;
+    border-top: 60px solid #ff3300;
+    border-left: 0px solid transparent;
+    border-right: 60px solid transparent;
+    transform: rotate(-90deg);
+    left: 110px;
+    top: -110px;
+}
+/*WISHES*/
+.wishes{
+    position: absolute;
+    transition: 4s;/*transision de cuant tarda en hacerce grande el texto*/
+    color: #ffffff;
+    font-size: 37px;
+    text-align: center;
+    z-index: -1;
+    left: 50px;
+}
+/*ANIM. OPEN BOX SHOW WISHES*/
+#click:checked + .click{ /*se abre la caja*/
+    transform: rotate(-110deg) scaleX(0.85);
+}
+#click:checked ~ .wishes{ /*salen los wishes*/
+    transform: translateY(-100px);
+}
+/*CONFETTI*/
+.sparkles {
+    position: absolute;
+    display: none;
+    top:-30px;
+    z-index:-2;
+    left:80px;
+}
+
+.spark1, .spark2, .spark3, .spark4, .spark5, .spark6 {
+    position: absolute;
+    background-color: #fee440;
+    border-radius:50%;
+    top:-90px;
+    z-index:-1;
+}
+
+.spark1 {
+    width: 40px;
+    height:40px;
+    left:70px;
+    top:-9px;
+    animation: fire 0.9s ease-in-out infinite, color 0.4s linear infinite;
+}
+.spark1:before {
+    content:"";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 8px;
+    left: 10px;
+    background-color: #fee440;
+    border-radius:50%;
+}
+.spark2 {
+    width: 45px;
+    height:45px;
+    left:99px;
+    top:-5px;
+    animation: fire2 0.28s ease-in-out infinite, color 0.4s linear infinite;
+}
+.spark2:before{
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 12px;
+    left: 3px;
+    background-color: #fee440;
+    border-radius: 50%;
+}
+
+.spark3{
+    width: 40px;
+    height: 40px;
+    left: 111px;
+    top: -5px;
+    animation: fire3 0.36s ease-in-out infinite, color2 0.4s linear infinite;
+}
+.spark3:before{
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 12px;
+    left: -1px;
+    background-color: #fee440;
+    border-radius: 50%;
+}
+
+.spark4{
+    width: 35px;
+    height: 35px;
+    left: 55px;
+    top: -5px;
+    animation: fire2 0.24s ease-in-out infinite, color2 0.2s linear infinite;
+}
+
+.spark5{
+    width: 35px;
+    height: 35px;
+    left: 29px;
+    top: -5px;
+    animation: fire3 0.45s ease-in-out infinite, color 0.2s linear infinite;
+}
+
+.spark6{
+    width: 30px;
+    height: 30px;
+    left: 29px;
+    top: -5px;
+    animation: fire 0.35s ease-in-out infinite, color2 0.2s linear infinite;
+}
+
+@keyframes fire3{ /*salen dispaarados el confeti fire3*/
+    100%{transform: translateX(20px) translateY(-93px);
+        opacity: 0.3;}
+}
+@keyframes fire2{ /*salen dispaarados el confeti fire2*/
+    100%{transform: translateX(-5px) translateY(-90px);
+        opacity: 0.3;}
+}
+@keyframes fire2{ /*salen dispaarados el confeti fire3*/
+    100%{transform: translateX(-25px) translateY(-95px);
+        opacity: 0.3;}
+}
+
+@keyframes color{
+    from {background-color: #d00000;}
+    to {background-color: #0081a7;}
+}
+@keyframes color2{
+    from {background-color: #8cff00;}
+    to {background-color: #1d2d44;}
+}
+
+#click:checked ~ .sparkles {
+    display: block;
+  }
+
+/*PASTEL*/
+.container{
+    position: relative;
+    scale: 2;
+}
+
+.cake{
+    display: none;
+
+    position: relative;
+    left: -100px;
+    top: 100px;
+    
+}
+
+.cake.show-cake{
+    display: block;
+    animation: showCake 1s ease-out forwards;
+}
+
+@keyframes showCake{
+    0%{
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.plate{
+    position: absolute;
+    width: 242px;
+    height: 10px;
+    border-radius: 10px;
+    background-color: #2a9d8f;
+}
+
+.plate::before{/*pan cafe*/
+    content: "";
+    position: absolute;
+    background-color: #653212;
+    width: 195px;
+    height: 90px;
+    top: -90px;
+    left: 25px;
+}
+
+.plate:after{
+    content: "";
+    position: absolute;
+    width: 195px;
+    left: 25px;
+    height: 10px;
+    background-color: #f6cb60;
+    top: -60px;
+    box-shadow: 0px 25px #f6cb60;
+}
+
+.cream{
+    position: absolute;
+    background-color: #ec7e00;
+    width: 195px;
+    height: 20px;
+    left: 25px;
+    top: -110px;
+    border-radius: 20px 20px 0 0;
+}
+
+.cream::before{
+    /*drip*/
+    content: "";
+    position: absolute;
+    background-color: #ec7e00;
+    width: 15px;
+    height: 30px;
+    top: 10px;
+    border-radius: 20px;
+    box-shadow: 15px 5px #653212,
+        30px -5px #ec7e00,
+        45px 0px #653212,
+        60px 4px #ec7e00,
+        75px 3px #653212,
+        90px -5px #ec7e00,
+        105px 5px #653212,
+        120px -5px #ec7e00,
+        135px 0px #653212,
+        150px 4px #ec7e00,
+        165px 0px #653212,
+        180px 3px #ec7e00;
+}
+
+.cream::after{ /*sombra*/
+    position: absolute;
+    content: "";
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 97.5px;
+    height: 110px;
+    left: 98px;
+    border-radius: 0 20px 0 0;
+}
+
+.candle{
+    position: absolute;
+    width: 10px;
+    height: 40px;
+    background: repeating-linear-gradient(#fae0e4,#fae0e4 5px,
+     #ff0a54 5px,#ff0a54 10px );/*vela*/
+    box-shadow: inset -5px 0px rgba(0, 0, 0, 0.3); /*sombra*/
+    top: -150px;
+    left: 118px;
+
+    transition: background-color 0.5s ease-out;
+}
+.candle-off{
+    background-color: #999;
+}
+.candle:before{
+    content: "";
+    position: absolute;
+    background-color: #000000;
+    width: 2px;
+    height: 10px;
+    top: -10px;
+    left: 4px;
+}
+
+.candle:after{
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #fcca46;
+    border-radius: 80% 15% 55% 50% / 55% 15% 80% 50%;
+    box-shadow: inset -3px 3px #fe7f2d;
+    transform: rotate(-45deg);
+    top: -28px;
+    left: -5px;
+    opacity: 0.9;
+    animation: scale .5s ease-out infinite;
+}
+
+@keyframes scale{/*animation*/
+    0% {transform: scaleY(1) rotate(-45deg); opacity: 0.9;}
+    50% {transform: scaleY(0.9) rotate(-45deg); opacity: 0.8;}
+    100% {transform: scaleY(1) rotate(-45deg); opacity: 0.9;}
+}
+
+.flame{
+    position: absolute;
+    
+    animation-play-state: running;
+}
+
+
+.flame-off {
+    display: none;
+}
+
+.flame:before{
+    content: "";
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 10px;
+    width: 118px;
+    border-radius: 0 10px 10px 0;
+    top: 0;
+    left: 123px;
+}
+
+.candle.flame-off:after {
+    content: "";
+    display: none;
+    animation: none;
+}
+
+.one{
+    position: absolute;
+    color: #fcca46;
+    font-size: 20px;
+    top: -160px;
+    left: 100px;
+    text-shadow: 33px -30px #fcca46;
+    animation: flash .5s ease infinite alternate;
+}
+
+.two{
+    position: absolute;
+    color: #fcca46;
+    font-size: 15px;
+    top: -180px;
+    left: 100px;
+    text-shadow: 35px 30px #fcca46;
+    animation: flash .8s ease infinite alternate;
+}
+
+.three{
+    position: absolute;
+    color: #fcca46;
+    font-size: 10px;
+    top: -195px;
+    left: 110px;
+    text-shadow: 35px 30px #fcca46;
+    animation: flash .4s ease infinite alternate;
+}
+@keyframes flash{
+    from{opacity: 1;}
+    to{opacity: 0;}
+}
+
+.flame-off:before,
+.flame-off .one,
+.flame-off .two,
+.flame-off .three {
+    display: none;
+}
+/*mini velas*/
+.miniCandle{
+    position: absolute;
+    width: 2.5px;
+    height: 15px;
+    background: #fae0e4;/*vela*/
+    box-shadow: inset -2px 0px rgba(0, 0, 0, 0.3); /*sombra*/
+    top: -125px;
+    left: 100px;
+}
+.candle-off{
+    background-color: #999;
+}
+
+.miniCandle:before{
+    content: "";
+    position: absolute;
+    background-color: #000000;
+    width: 0.5px;
+    height: 2px;
+    top: -2px;
+    left: 1px;
+}
+
+.miniCandle:after{
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: #fcca46;
+    border-radius: 80% 15% 55% 50% / 55% 15% 80% 50%;
+    box-shadow: inset -1px 1px #fe7f2d;
+    transform: rotate(-45deg);
+    top: -5px;
+    left: 0px;
+    opacity: 0.9;
+    animation: scale .5s ease-out infinite;
+}
+
+.miniCandle.candle-off:after {
+    content: "";
+    display: none;
+}
+/*BOTON*/
+button {
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    --btn-color: rgb(100, 61, 136);
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    color: var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 1em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    
+    position: fixed;
+    bottom: 0;
+    margin: 6em;    
+    transform: scale(0.6);
+    transition: all 0.3s;
+}
+   
+button::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--glow-spread-color);
+    filter: blur(2em);
+    opacity: .7;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, .3);
+}
+   
+button:hover {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 2em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+}
+   
+button:active {
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+           0 0 2.5em 2em var(--glow-spread-color),
+           inset 0 0 .5em .25em var(--glow-color);
+}
+
+/*CARTA*/
+:root{
+    --primary: #fff;
+    --bg-envelope-color: #f5edd1;
+    --envelope-tab: #ecdeb8;
+    --envelope-cover: #e6cfa7;
+    --shadow-color:rgba(0, 0, 0, 0.2);
+    --txt-color: #444;
+    --heart-color: rgb(252, 8, 231);
+}
+
+.carta{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.carta .visible {
+
+   display: block;
+}
+
+.container2{
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+.container2 > .envelope-wrapper {
+    background: var(--bg-envelope-color);
+    box-shadow: 0 0 40px var(--shadow-color);
+  }
+.envelope-wrapper > .envelope{ /*hace mas gde la hoja de la carta*/
+    position: relative;
+    width: 300px;
+    height: 230px;
+}
+.envelope-wrapper > .envelope::before{ 
+    /*triangulito de la carta*/
+    content: "";
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    border-top: 130px solid var(--envelope-tab);
+    border-right: 150px solid transparent;
+    border-left: 150px solid transparent;
+    transform-origin: top;
+    transition: all 0.5s ease-in-out 0.7s;
+}
+.envelope-wrapper > .envelope::after{ 
+    /*parte cerrada del soobre*/
+    content: "";
+    position: absolute;
+    z-index: 2;
+    width: 0px;
+    height: 0px;
+    border-top: 130px solid transparent;
+    border-right: 150px solid var(--envelope-cover);
+    border-bottom: 100px solid var(--envelope-cover);
+    border-left: 150px solid var(--envelope-cover);
+}
+.envelope > .letter{
+    position: absolute;
+    right: 50%;
+    bottom: 0%; /*0*/
+    transform: translateX(50%) scale (0);/**/
+    opacity: 0;
+    width: 100%;/*54*/
+    height: 100%;/*80*/
+    background: var(--primary);
+    text-align: center;
+    transition: all 1s ease-in-out;
+    box-shadow: 0 0 5px var(--shadow-color);
+    padding: 20px 10px;
+    z-index: 5;
+   
+}
+.envelope > .letter > .text{
+    font-size: 10px;
+    color: var(--txt-color);
+    text-align: left;
+}
+.heart{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    background: var(--heart-color);
+    z-index: 4;
+    transform: translate(-50%, -20%) rotate(45deg);
+    transition: transform 0.5s ease-in-out 1s;
+    box-shadow: 0 1px 6px var(--shadow-color);
+    cursor: pointer;
+}
+.heart:before, 
+.heart:after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: var(--heart-color);
+    border-radius: 50%;
+}
+.heart:before{
+    top: -7.5px;
+}
+.heart:after{
+    right: 7.5px;
+}
+.flap > .envelope:before {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+.flap > .envelope > .letter{/*sale la carta*/
+    bottom: 100px;
+    /*transform: scale(1.5);*/
+    transform: translateX(50%) scale(1.5);
+    opacity: 1;
+    transition-delay: 1s;
+}
+.flap > .heart{ /*gira el corazon*/
+    transform: rotate(90deg);
+    transition-delay: 0.4s;
+}
+
+video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    z-index: 5;
+}
